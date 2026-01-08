@@ -10,9 +10,10 @@ function App() {
   return (
     <RenderRectangle
       bgColor={"white"}
-      width={1200}
+      width={1800}
       height={1000}
       count={toNumber}
+      root={true}
     />
   );
 }

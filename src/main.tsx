@@ -5,7 +5,10 @@ import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
-  { path: "/", Component: () => <p>Start by adding to params.</p> },
+  {
+    path: "/",
+    Component: () => <p>Start by adding to url like /2 or /8 etc...</p>,
+  },
   { path: ":count", Component: App },
 ]);
 

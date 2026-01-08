@@ -3,20 +3,18 @@ import { useState } from "react";
 export default function RenderRectangle({
   width,
   height,
-
   count,
   bgColor,
+  root,
 }: {
   width: number;
   height: number;
   count: number;
   bgColor?: string;
+  root: boolean;
 }) {
   // store the initial state of color (self state)
   const [selfBgColor, setSelfBgColor] = useState<string | null>(null);
-
-  // store the input value
-  const [value, setValue] = useState("");
 
   // return if it reaches the maximum count
   if (count === 0) return null;
@@ -26,12 +24,6 @@ export default function RenderRectangle({
   const finalWidth = width - 100;
   const finalHeight = height - 100;
 
-  // listener for enter event
-  function onPressEnter(e: React.KeyboardEvent) {
-    if (e.key === "Enter") {
-      setSelfBgColor(value.trim());
-    }
-  }
   return (
     <div
       className="rectangle"
@@ -44,9 +36,8 @@ export default function RenderRectangle({
       <input
         type="text"
         id={"color" + count}
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
-        onKeyDown={(e) => onPressEnter(e)}
+        value={selfBgColor!}
+        onChange={(e) => setSelfBgColor(e.target.value.trim())}
         placeholder="Enter color"
       />
       <div
@@ -62,6 +53,7 @@ export default function RenderRectangle({
           height={finalHeight}
           width={finalWidth}
           count={count - 1}
+          root={root}
         />
       </div>
     </div>
