@@ -3,15 +3,16 @@ import RenderRectangle from "./components/RenderRectangles";
 
 function App() {
   const { count } = useParams();
-  if (!count) return;
+
+  if (!count) return null;
   const toNumber = +count;
+
   return (
     <RenderRectangle
-      width={800}
-      height={800}
-      negateHeight={+toNumber * 0}
-      negateWidth={+toNumber * 0}
-      count={+toNumber}
+      bgColor={"white"}
+      width={1200}
+      height={1000}
+      count={toNumber}
     />
   );
 }

@@ -3,46 +3,67 @@ import { useState } from "react";
 export default function RenderRectangle({
   width,
   height,
-  negateWidth,
-  negateHeight,
+
   count,
+  bgColor,
 }: {
   width: number;
   height: number;
-  negateWidth: number;
-  negateHeight: number;
   count: number;
-  children?: React.ReactElement;
+  bgColor?: string;
 }) {
-  const [backgroundColor, setBackgroundColor] = useState("");
+  // store the initial state of color (self state)
+  const [selfBgColor, setSelfBgColor] = useState<string | null>(null);
 
-  if (count === 0) return;
+  // store the input value
+  const [value, setValue] = useState("");
 
-  const finalWidth = width - negateWidth;
-  const finalHeight = height - negateHeight;
+  // return if it reaches the maximum count
+  if (count === 0) return null;
 
+  // create final props for the next component
+  const finalColor = selfBgColor ?? bgColor;
+  const finalWidth = width - 100;
+  const finalHeight = height - 100;
+
+  // listener for enter event
+  function onPressEnter(e: React.KeyboardEvent) {
+    if (e.key === "Enter") {
+      setSelfBgColor(value.trim());
+    }
+  }
   return (
     <div
       className="rectangle"
       style={{
-        width: finalWidth + "px",
-        height: finalHeight + "px",
-        backgroundColor: backgroundColor,
+        width: finalWidth,
+        height: finalHeight,
+        backgroundColor: finalColor,
       }}
     >
       <input
         type="text"
-        id="color-input"
-        onChange={(e) => setBackgroundColor(e.target.value)}
-        value={backgroundColor}
+        id={"color" + count}
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+        onKeyDown={(e) => onPressEnter(e)}
+        placeholder="Enter color"
       />
-      <RenderRectangle
-        height={finalHeight}
-        width={finalWidth}
-        count={count - 1}
-        negateHeight={count * 50}
-        negateWidth={count * 50}
-      />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "1rem",
+        }}
+      >
+        <RenderRectangle
+          bgColor={finalColor}
+          height={finalHeight}
+          width={finalWidth}
+          count={count - 1}
+        />
+      </div>
     </div>
   );
 }
