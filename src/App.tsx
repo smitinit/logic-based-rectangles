@@ -4,8 +4,8 @@ import RenderRectangle from "./components/RenderRectangles";
 function App() {
   const { count } = useParams();
 
-  if (!count) return null;
-  const toNumber = +count;
+  const toNumber = Number(count);
+  if (Number.isNaN(toNumber) || toNumber < 0) return <p>Invalid count</p>;
 
   return (
     <RenderRectangle

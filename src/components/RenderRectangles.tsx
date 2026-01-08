@@ -34,7 +34,7 @@ export default function RenderRectangle({
       <input
         type="text"
         id={"color" + count}
-        value={selfBgColor!}
+        value={selfBgColor ?? ""}
         onChange={(e) => setSelfBgColor(e.target.value.trim())}
         placeholder="Enter color"
       />
