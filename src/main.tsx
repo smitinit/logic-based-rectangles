@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     path: "/",
     Component: () => <p>Start by adding to url like /2 or /8 etc...</p>,
   },
-  { path: ":count", Component: App },
+  { path: "/:count", Component: App },
 ]);
 
 createRoot(document.getElementById("root")!).render(
