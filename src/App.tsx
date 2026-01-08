@@ -13,7 +13,6 @@ function App() {
       width={1800}
       height={1000}
       count={toNumber}
-      root={true}
     />
   );
 }

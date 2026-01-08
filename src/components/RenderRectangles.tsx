@@ -5,13 +5,11 @@ export default function RenderRectangle({
   height,
   count,
   bgColor,
-  root,
 }: {
   width: number;
   height: number;
   count: number;
   bgColor?: string;
-  root: boolean;
 }) {
   // store the initial state of color (self state)
   const [selfBgColor, setSelfBgColor] = useState<string | null>(null);
@@ -53,7 +51,6 @@ export default function RenderRectangle({
           height={finalHeight}
           width={finalWidth}
           count={count - 1}
-          root={root}
         />
       </div>
     </div>
