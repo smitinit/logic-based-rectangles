@@ -6,7 +6,7 @@ function App() {
 
   const toNumber = Number(count);
   if (Number.isNaN(toNumber) || toNumber < 0) return <p>Invalid count</p>;
-  if (toNumber > 7) return <p>Try for small value, less than 7</p>;
+  if (toNumber > 7) return <p>Try for small value, less than 8</p>;
   return (
     <RenderRectangle
       bgColor={"white"}

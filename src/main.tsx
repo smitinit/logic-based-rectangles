@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: () => <p>Start by adding to url like /2 or /8 etc...</p>,
+    Component: () => <p>Start by adding to url like /2 or /7 etc...</p>,
   },
   { path: "/:count", Component: App },
 ]);
